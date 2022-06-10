@@ -26,6 +26,7 @@ import java.util.List;
  */
 public class CameraUtil {
     private static Camera mCamera = null;
+    // 默认打开后置相机
     private static int mCameraID = Camera.CameraInfo.CAMERA_FACING_BACK;
 
     /**
@@ -71,6 +72,7 @@ public class CameraUtil {
     public static void setDisplay(SurfaceTexture surfaceTexture) {
         try {
             if (mCamera != null) {
+                // 允许相机将获取的图片在一个隐藏的surfaceTexture上显示
                 mCamera.setPreviewTexture(surfaceTexture);
             }
         } catch (IOException e) {

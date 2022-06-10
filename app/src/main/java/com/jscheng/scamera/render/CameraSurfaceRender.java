@@ -38,7 +38,9 @@ public class CameraSurfaceRender implements GLSurfaceView.Renderer {
     // 从这个回调方法名我们可以大概了解这个方法的用处，即在OpenGL surface被创建时的回调。
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+        // 生成OpenGL纹理
         mCameraTextureId = GlesUtil.createCameraTexture();
+        // OpenGL纹理绑定到SurfaceTexture
         mRenderGroups.setInputTexture(mCameraTextureId);
         mRenderGroups.create();
         initCameraTexture();
@@ -50,6 +52,8 @@ public class CameraSurfaceRender implements GLSurfaceView.Renderer {
     public void initCameraTexture() {
         mCameraTexture = new SurfaceTexture(mCameraTextureId);
         mCameraTexture.setOnFrameAvailableListener(new SurfaceTexture.OnFrameAvailableListener() {
+
+            // 当相机有新的预览帧数据时，此回调会被调用。
             @Override
             public void onFrameAvailable(SurfaceTexture surfaceTexture) {
                 if (mCallback != null) {

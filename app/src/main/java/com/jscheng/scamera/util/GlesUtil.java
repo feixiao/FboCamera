@@ -100,6 +100,7 @@ public class GlesUtil {
     }
 
     public static int createCameraTexture() {
+        // 生成OpenGL纹理
         int[] texture = new int[1];
         GLES30.glGenTextures(1, texture, 0);
         GLES30.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture[0]);
