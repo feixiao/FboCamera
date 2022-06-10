@@ -80,6 +80,7 @@ public class CameraSurfaceRender implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl10) {
         if (mCameraTexture != null) {
+            // updateTexImage 会更新接收到的预览数据到其绑定的OpenGL纹理中。
             mCameraTexture.updateTexImage();
             timestamp = mCameraTexture.getTimestamp();
             mCameraTexture.getTransformMatrix(mTransformMatrix);
